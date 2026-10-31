@@ -62,5 +62,3 @@ A reinforcement-learning (RL) agent learns to drive an F1-style car around Monza
 | 4 | Double-track (four-wheel) model, tyre load sensitivity, tyre temperature | Stage 3, optional |
 
 Each level is validated before moving to the next. Fidelity is limited by what can be parameterised from public data; beyond that point extra detail is false precision.
-
-(https://github.com/TUMFTM/global_racetrajectory_optimization).
