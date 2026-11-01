@@ -1,0 +1,27 @@
+# Name shown in GitHub's "Actions" tab and on the PR
+name: CI
+
+# WHEN to run: on every push to main, and on every pull request
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# WHAT to run: one job called "test"
+jobs:
+  test:
+    runs-on: ubuntu-latest      # a fresh, clean Linux machine from GitHub, every time
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v6   # a ready-made action that downloads your repo onto the machine
+
+      - name: Build the Docker image
+        run: docker build -t rl-formula1 .   # same recipe as your Dev Container; -t gives the image a name
+
+      - name: Run the tests inside the container
+        run: >
+          docker run --rm
+          --user "$(id -u):$(id -g)"
+          -v "${{ github.workspace }}:/workspace"
+          rl-formula1
+          python -m pytest
