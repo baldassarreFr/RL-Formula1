@@ -1,0 +1,16 @@
+{
+  "name": "RL-Formula1",
+  "build": {
+    "dockerfile": "../Dockerfile",  // relative to this .devcontainer folder
+    "context": ".."                 // the repo root: what COPY can see
+  },
+  // Mount the repo at /workspace, the same path the Dockerfile and CI use
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "dev",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]  // installed inside the container
+    }
+  }
+}
